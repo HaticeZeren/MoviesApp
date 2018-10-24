@@ -18,7 +18,6 @@ const allEnhancers=compose(
 
 const store=createStore(
     rootReducer,
-    {movies:[]},
     allEnhancers
     );
 ReactDOM.render(

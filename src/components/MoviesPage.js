@@ -2,15 +2,20 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {MoviesList} from './MoviesList';
 
+import {fetchingMovies} from '../actions/movies';
 
 class MoviesPage extends Component {
 
+
+	componentDidMount(){
+		console.log('moviesPage componentDidMount');
+		this.props.fetchingMovies();
+	}
 	
 	render() {
-		console.log('moviesPage',this.props.movies.length);
+		console.log('moviesPage',this.props);
 		return (
 			<div>
-				<h2>Movies Page</h2>
 				<MoviesList movies={this.props.movies}></MoviesList>
 
 			</div>
@@ -19,9 +24,13 @@ class MoviesPage extends Component {
 }
 
 const mapStateToProps=(state)=>{
+	console.log('mapState:',state.movies);
 	return{
       movies:state.movies
 	}
 };
 
-export default connect(mapStateToProps)(MoviesPage);
+const mapDispatchToProps={
+fetchingMovies
+};
+export default connect(mapStateToProps,mapDispatchToProps)(MoviesPage);
