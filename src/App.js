@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {Route,NavLink,Switch } from 'react-router-dom';
 import MoviesPage from './components/MoviesPage';
+import NewMoviesPage from './components/NewMoviesPage';
 import 'semantic-ui-css/semantic.min.css';
 
 import {Footer} from './components/Footer';
@@ -69,9 +70,10 @@ class App extends Component {
       <Header/>
    
       <Container text>
-       <Switch>   
-       <Route  path='/Movies'  component={MoviesPage} />
-      </Switch>
+
+       <Route  path='/Movies'  component={MoviesPage} exact />
+       <Route  path='/Movies/new' component={NewMoviesPage}  exact/>
+      
       </Container>
 
       

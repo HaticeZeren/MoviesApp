@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import { Container, Visibility, Menu, Image } from 'semantic-ui-react';
 
 
@@ -45,10 +45,8 @@ const menuStyle = {
 								<Image size='mini' src='https://react.semantic-ui.com/logo.png' />
 							</Menu.Item>
 							<Menu.Item header>Movieapp</Menu.Item>
-							<Menu.Item as={Link} to="/movies">
-								Movies
-							</Menu.Item>
-							<Menu.Item as='a'>Add New</Menu.Item>
+							<Menu.Item as={NavLink} to="/movies" exact>Movies</Menu.Item>
+							<Menu.Item as={NavLink} to="/movies/new" exact >Add Movies </Menu.Item>
 						</Container>
 					</Menu>
 				</Visibility>

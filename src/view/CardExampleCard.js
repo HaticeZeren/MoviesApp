@@ -7,7 +7,6 @@ export class CardExampleCard extends React.Component{
 
   
   render(){
-    console.log('/////////////////',this.props.movies.userId)
     return(
       <div className="cardd">
  <Card >
