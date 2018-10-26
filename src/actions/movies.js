@@ -2,11 +2,32 @@ import axios from 'axios';
 
 import {API_BASE} from '../config/env';
 
-export const FETCHED_MOVIES = "FETCHED_MOVIES";
-export const FETCH_MOVIES_ERROR="FETCH_MOVIES_ERROR";
+export const FETCH_MOVIES_FULFILLED  = "FETCH_MOVIES_FULFILLED";
+export const FETCH_MOVIES_REJECTED="FETCH_MOVIES_REJECTED";
+export const FETCH_MOVIES_PENDING ="FETCH_MOVIES_PENDING";
 
 export function fetchingMovies(){// dispatch return eden bir action methodudur.
     return (dispatch)=>{
+        console.log('fetching movies');
+        dispatch({
+
+            type:"FETCH_MOVIES",
+            payload: axios.get(API_BASE)
+            .then(function (response) {
+                return response.data;
+              })
+              
+        })
+
+
+    }
+
+}
+
+/**
+ * 
+ * 
+ *  
         axios.get(API_BASE)
         .then(response=>dispatch({
             type:FETCHED_MOVIES,
@@ -18,6 +39,4 @@ export function fetchingMovies(){// dispatch return eden bir action methodudur.
             type:FETCH_MOVIES_ERROR,
             payload:error
         }))
-    }
-
-}
+ */

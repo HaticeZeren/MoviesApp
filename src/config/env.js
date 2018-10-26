@@ -1,1 +1,1 @@
-export const API_BASE="https://jsonplaceholder.typicode.com/todos"; 
+export const API_BASE="http://localhost:8080/api/movies"; 

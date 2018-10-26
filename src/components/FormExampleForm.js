@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button , Form,Image } from 'semantic-ui-react'
+import {Redirect} from 'react-router-dom'
 import { AlertDeneme } from './AlertDeneme';
 export class FormExampleForm extends React.Component{
-     
 
     state={
-      title:'',
-      cover:'',
+      title: this.props.movie? this.props.movie.title: '',
+      cover: this.props.movie? this.props.movie.cover: '',
       error:{}
     };
 
@@ -32,11 +32,13 @@ export class FormExampleForm extends React.Component{
             error:errors
         })
 
-         if(Object.keys(errors).length===0 )  this.props.onNewMovies(this.state)  
-
+         if(Object.keys(errors).length===0 )  this.props.onNewMovies(this.state)
+          
     }
 
     render(){
+        console.log('state in FormExample',this.props);
+
         return(
     <div>
     <Form >

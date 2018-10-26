@@ -23,10 +23,10 @@ class MoviesPage extends Component {
 	}
 }
 
-const mapStateToProps=(state)=>{
-	console.log('mapState:',state.movies);
+const mapStateToProps=(state)=>{ //strodaki tüm veriler state içerisinde tutuluyor.
+	console.log('mapState:',state);
 	return{
-      movies:state.movies
+      movies:state.movies // /reducer/movies.js içerisindeki verileri 
 	}
 };
 

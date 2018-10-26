@@ -61,7 +61,6 @@ class App extends Component {
   unStickTopMenu = () => this.setState({ menuFixed: false })
 
   render() {
-    const { menuFixed, overlayFixed } = this.state
 
     return (
       
@@ -73,7 +72,8 @@ class App extends Component {
 
        <Route  path='/Movies'  component={MoviesPage} exact />
        <Route  path='/Movies/new' component={NewMoviesPage}  exact/>
-      
+       <Route  path='/movie/:_id' component={NewMoviesPage}  exact/>
+
       </Container>
 
       
