@@ -1,15 +1,21 @@
 import React from 'react'
 import { Button , Form,Image } from 'semantic-ui-react'
-import {Redirect} from 'react-router-dom'
 import { AlertDeneme } from './AlertDeneme';
+
+import {Redirect} from 'react-dom'
 export class FormExampleForm extends React.Component{
 
-    state={
-      title: this.props.movie? this.props.movie.title: '',
-      cover: this.props.movie? this.props.movie.cover: '',
-      error:{}
-    };
-
+    
+     
+        state={
+            title:  '',
+            cover:  '',
+            _id:'',
+            error:{},
+            done:true
+          };
+    
+        
     handleChange=(e)=>{
         console.log('event işlemlerii:',e.target);
         this.setState({
@@ -17,7 +23,23 @@ export class FormExampleForm extends React.Component{
         });
     }
 
-     
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWill-----------',nextProps.movie);
+		const movie = nextProps.movie;
+		if (
+            movie
+            &&
+			movie.title
+			&&
+			movie.title !== this.state.title
+		) {
+			this.setState({
+				title: movie.title,
+                cover: movie.cover,
+                _id:movie._id
+			});
+ 		}
+	}
     validate=()=>{
         const errors={};
 
@@ -26,29 +48,34 @@ export class FormExampleForm extends React.Component{
 
         return errors;
     }
+
+     
+        
     onSubmit=()=>{
         const errors=this.validate();
-        this.setState({
-            error:errors
-        })
+        console.log(this.state._id);
+       
 
-         if(Object.keys(errors).length===0 )  this.props.onNewMovies(this.state)
-          
+
+        // if(Object.keys(errors).length===0 ) this.props.onNewMovies(this.state) 
+
+         (this.state._id=='' && Object.keys(errors).length===0)? this.props.onNewMovies(this.state) :this.props.updateMovies(this.state);
+
     }
-
+     
+   
     render(){
-        console.log('state in FormExample',this.props);
 
         return(
     <div>
     <Form >
     <Form.Field>
       <label>Tittle</label>
-      <input placeholder='title' value={this.state.title} id="title" name="title" onChange={this.handleChange} ref="someName"/>
+      <input placeholder='title' value={this.state.title} name="title"  onChange={this.handleChange} />
     </Form.Field>
     <Form.Field>
       <label>Cover</label>
-      <input placeholder='cover' value={this.state.cover}  id="cover" name="cover" onChange={this.handleChange} />
+      <input placeholder='cover' value={this.state.cover}  name="cover"  onChange={this.handleChange} />
     </Form.Field>
     <Button type='submit' primary onClick={this.onSubmit}>Submit</Button>
     </Form>

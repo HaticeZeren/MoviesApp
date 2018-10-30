@@ -1,6 +1,6 @@
 
 
-import {  FETCH_MOVIES_FULFILLED,FETCH_MOVIES_REJECTED , FETCH_MOVIES_PENDING } from '../actions/movies';
+import {  FETCH_MOVIES_FULFILLED,FETCH_MOVIES_REJECTED ,DELETE_MOVIES_FULFILLED} from '../actions/movies';
 
 const init ={
     movies:[],
@@ -23,6 +23,14 @@ export default (state=init,action)=>{
 
         })
 
+
+        case DELETE_MOVIES_FULFILLED :
+        return({
+            
+            ...state,
+           
+        })
+
        
         case FETCH_MOVIES_REJECTED:
         return({
@@ -31,9 +39,7 @@ export default (state=init,action)=>{
             error:action.payload
         })
 
-
-        
-
+    
     }
 
     return {

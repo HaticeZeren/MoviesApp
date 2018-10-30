@@ -69,7 +69,7 @@ class App extends Component {
       <Header/>
    
       <Container text>
-
+      
        <Route  path='/Movies'  component={MoviesPage} exact />
        <Route  path='/Movies/new' component={NewMoviesPage}  exact/>
        <Route  path='/movie/:_id' component={NewMoviesPage}  exact/>

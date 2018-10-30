@@ -5,7 +5,6 @@ import { Grid, Image } from 'semantic-ui-react';
 
 
 function yaz(props){
-console.log('MovieList:');
 if(props.movies.movies.movies){
  // props.movies.movies.movies.map((movie)=>{console.log(movie)})
   return props.movies.movies.movies;
@@ -18,7 +17,7 @@ export  const  MoviesList=(props)=>{
 
     const dizi= yaz(props);
 
-
+     console.log('===========',props);
 
     const emptyMessage=(
 		<div>Henüz Bir Film Listesi Yok...</div>
@@ -29,7 +28,7 @@ export  const  MoviesList=(props)=>{
     const moviesList=(
         <div>
            {
-                props.movies.error.response ? <h3>hata</h3>:<Grid stackable columns={3}>{dizi.map( movie=> <Grid.Column key={movie._id}  className="deneme"><CardExampleCard   movies={movie} /> </Grid.Column>)}</Grid>
+                props.movies.error.response ? <h3>hata</h3>:<Grid stackable columns={3}>{dizi.map( movie=> <Grid.Column key={movie._id}  className="deneme"><CardExampleCard   movies={movie}   key={movie._id} sil={props.deleteMovie} /> </Grid.Column>)}</Grid>
            }
         </div>
         
